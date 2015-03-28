@@ -15,7 +15,7 @@ sep = str(uuid.uuid4())
 
 
 def print_help():
-    print("usage: %s".format(sys.argv[0]))
+    print("usage: python3 {} histfile".format(sys.argv[0]))
 
 
 def check_arg(argc):
