@@ -9,6 +9,10 @@
 
 import sys
 import os
+import uuid
+
+
+sep = uuid.uuid4().__str__()
 
 
 def print_help():
@@ -29,17 +33,12 @@ def read_histfile(histpath):
 
 def replace_newline(histfile):
     lines = histfile.read()
-    lines.replace('\\\n','✅')
-    print(lines)
-    exit()
-
-    line_number = 0
-    for line in histfile:
-        #line_number += 1
-        #print('{:>4} {}'.format(line_number, line.rstrip()))
-        pass
-
-    exit()
+    return lines.replace('\\\n', sep)
+    # line_number = 0
+    # for line in histfile:
+    #     #line_number += 1
+    #     #print('{:>4} {}'.format(line_number, line.rstrip()))
+    #     pass
 
 
 def main():
@@ -51,8 +50,8 @@ def main():
 
     histpath = argvs[1]
     with open(histpath, encoding='utf-8') as histfile:
-        print(histfile)
-        replace_newline(histfile)
+        histfile = replace_newline(histfile)
+        exit()
         sort_lines(histfile)
         clean_dups(histfile)
         reformat(histfile)
